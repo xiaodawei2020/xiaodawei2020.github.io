@@ -18220,23 +18220,24 @@
 		}
 
 		async function fetchLatestOnlineVersionNumber() {
-			cachedWorkerVersionRawText = '';
-			cachedLatestOnlineVersion = 0;
+			return 0;
+			// cachedWorkerVersionRawText = '';
+			// cachedLatestOnlineVersion = 0;
+			// try {
+			// 	const workerText = await fetchWithAutoMirror(WORKER_VERSION_SOURCE_URL + '?_t=' + Date.now(), 'Worker 主程序');
+			// 	cachedWorkerVersionRawText = workerText;
 
-			try {
-				const workerText = await fetchWithAutoMirror(WORKER_VERSION_SOURCE_URL + '?_t=' + Date.now(), 'Worker 主程序');
-				cachedWorkerVersionRawText = workerText;
-
-				const versionMatch = workerText.match(/^\s*const\s+Version\s*=\s*['"]([^'"]+)['"]\s*;?/m);
-				const latestVersion = versionMatch ? parseVersionNumber(versionMatch[1]) : 0;
-				cachedLatestOnlineVersion = latestVersion;
-				console.log(`[Version] 在线最新版本识别: raw="${versionMatch ? versionMatch[1] : ''}", parsed=${latestVersion}`);
-				return latestVersion;
-			} catch (error) {
-				console.warn('[Version] 在线获取最新版本失败，按 0 处理:', error);
-				cachedLatestOnlineVersion = 0;
-				return 0;
-			}
+			// 	const versionMatch = workerText.match(/^\s*const\s+Version\s*=\s*['"]([^'"]+)['"]\s*;?/m);
+			// 	const latestVersion = versionMatch ? parseVersionNumber(versionMatch[1]) : 0;
+			// 	cachedLatestOnlineVersion = latestVersion;
+			// 	console.log(`[Version] 在线最新版本识别: raw="${versionMatch ? versionMatch[1] : ''}", parsed=${latestVersion}`);
+			// 	return latestVersion;
+			// } catch (error) {
+			// 	console.warn('[Version] 在线获取最新版本失败，按 0 处理:', error);
+			// 	cachedLatestOnlineVersion = 0;
+			// 	return 0;
+			// }
+			
 		}
 
 		async function updateVersionBadgeHealthByLatest(currentVersion) {
